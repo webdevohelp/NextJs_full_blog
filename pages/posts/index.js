@@ -1,23 +1,18 @@
 import AllPosts from '../../components/posts/all-posts';
+import { getAllPosts } from '../../helpers/posts-util';
 
-const DUMMY_POSTS = [
-    {
-        slug: 'Cats are awesome!',
-        title: 'Cats',
-        image: '1.JPG',
-        excerpt: 'All Posts> Cats are sooooo awesome!!!',
-        date: '2022-02-10',
-    },
-    {
-        slug: 'Cats are awesome!22',
-        title: 'Cats',
-        image: '1.JPG',
-        excerpt: 'All Posts> Cats are sooooo awesome!!!',
-        date: '2022-02-10',
-    },
-];
-
-function AllPostsPage() {
-    return <AllPosts posts={DUMMY_POSTS} />;
+function AllPostsPage(props) {
+    return <AllPosts posts={props.posts} />;
 }
 export default AllPostsPage;
+
+export function getStaticProps() {
+    const allPosts = getAllPosts();
+
+    return {
+        props: {
+            posts: allPosts,
+        },
+        revalidate: 1200,
+    };
+}
