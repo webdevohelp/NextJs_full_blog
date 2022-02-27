@@ -1,5 +1,5 @@
 ---
-title: 'Posts'
+title: 'First Post'
 date: '2022-10-15'
 author: 'abcdef'
 image: '1.JPG'
